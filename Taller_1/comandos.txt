@@ -1,0 +1,63 @@
+
+#################
+## factorial ##
+#################
+
+## Compilacion ##
+
+g++ -std=c++11 factorial_functions.cxx test_factorial.cxx -o my_test_factorial
+
+## Tabla de ejecucion ##
+
+## En Linux, Mac o repl.it ##
+for i in `seq 0 1 120`; do ./my_test_factorial $i; done > factorial_table.txt
+## En Windows consola clasica ##
+for /L %i in (0,1,120) do my_test_factorial.exe %i >> factorial_table.txt
+## En Windows PowerShell ##
+for ($i=0; $i -le 120; $i++) { .\my_test_factorial.exe $i >> factorial_table.txt }
+
+
+##########
+## Sort ##
+##########
+
+## Compilacion ordenamiento de secuencia aleatoria ##
+
+g++ -std=c++11 sort_functions.cxx test_sort_random.cxx -o my_test_sort_random
+
+## Tabla de ejecucion ordenamiento de secuencia aleatoria ##
+
+## En Linux, Mac o repl.it ##
+for i in `seq 1000 400 20000`; do ./my_test_sort_random $i; done > sort_random_table.txt
+## En Windows consola clasica ##
+for /L %i in (1000,400,20000) do my_test_sort_random.exe %i >> sort_random_table.txt
+## En Windows PowerShell ##
+for ($i=1000; $i -le 20000; $i+=400) { .\my_test_sort_random.exe $i >> sort_random_table.txt }
+
+
+## Compilacion ordenamiento de secuencia invertida ##
+
+g++ -std=c++11 sort_functions.cxx test_sort_inverse.cxx -o my_test_sort_inverse
+
+## Tabla de ejecucion ordenamiento de secuencia invertida ##
+
+## En Linux, Mac o repl.it ##
+for i in `seq 1000 400 20000`; do ./my_test_sort_inverse $i; done > sort_inverse_table.txt
+## En Windows consola clasica ##
+for /L %i in (1000,400,20000) do my_test_sort_inverse.exe %i >> sort_inverse_table.txt
+## En Windows PowerShell ##
+for ($i=1000; $i -le 20000; $i+=400) { .\my_test_sort_inverse.exe $i >> sort_inverse_table.txt }
+
+
+## Compilacion ordenamiento de secuencia ordenada ##
+
+g++ -std=c++11 sort_functions.cxx test_sort_sorted.cxx -o my_test_sort_sorted
+
+## Tabla de ejecucion ordenamiento de secuencia ordenada ##
+
+## En Linux, Mac o repl.it ##
+for i in `seq 1000 400 20000`; do ./my_test_sort_sorted $i; done > sort_sorted_table.txt
+## En Windows consola clasica ##
+for /L %i in (1000,400,20000) do my_test_sort_sorted.exe %i >> sort_sorted_table.txt
+## En Windows PowerShell ##
+for ($i=1000; $i -le 20000; $i+=400) { .\my_test_sort_sorted.exe $i >> sort_sorted_table.txt }
