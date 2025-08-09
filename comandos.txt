@@ -1,0 +1,53 @@
+Comandos disponibles
+- cargar <nombre_archivo>
+- listar_secuencias
+- histograma <descripcion>
+- es_subsecuencia <subsecuencia>
+- enmascarar <subsecuencia>
+- guardar <nombre_archivo>
+- codificar <nombre_archivo.fabin>
+- decodificar <nombre_archivo.fabin>
+- ruta_mas_corta <descripcion_secuencia> <i> <j> <x> <y>
+- base_remota <descripcion_secuencia> <i> <j>
+- ayuda
+- ayuda <nombre_comando>
+- salir
+Descripciones
+[cargar]
+Carga en memoria un archivo FASTA con múltiples secuencias
+
+[listar_secuencias]
+Muestra en pantalla la descripcion de todas las secuencias almacenadas en memoria
+
+[histograma]
+Genera un conteo de las bases (A, C, G, T) de una secuencia dada por su descripcion
+
+[es_subsecuencia]
+Verifica si una subsecuencia está contenida en alguna de las secuencias almacenadas
+
+[enmascarar]
+Reemplaza todas las apariciones de una subsecuencia con 'X' en las secuencias cargadas
+
+[guardar]
+Guarda todas las secuencias actualmente en memoria en un archivo de texto en formato FASTA
+
+[codificar]
+Convierte un archivo de secuencias en un archivo binario comprimido (.fabin)
+
+[decodificar]
+Lee un archivo binario comprimido (.fabin) y lo convierte nuevamente a formato FASTA
+
+[ruta_mas_corta]
+Dada una secuencia y dos coordenadas (i, j) y (x, y), calcula la ruta mas corta considerando las posiciones en la secuencia
+
+[base_remota]
+Dada una secuencia y dos coordenadas (i, j), identifica la base que se encuentra mas alejada según un criterio definido
+
+[ayuda]
+Muestra este listado de comandos disponibles
+
+[ayuda <nombre_comando>]
+Muestra informacion detallada sobre el comando indicado, su sintaxis y su funcion
+
+[salir]
+Termina la ejecucion del programa
