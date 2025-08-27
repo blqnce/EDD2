@@ -44,20 +44,14 @@ Fasta Fasta::cargar(string nombre_entrada){
     
 
     while(getline(archivo, temp)){
-        if(encontrado == false)
-        letra = temp.at(0);
-        if (letra == '>'){
-            encontrado=true;
-        }
         if(encontrado == false){
-            cout << nombre_entrada << " no es una secuencia" << endl;
-            return fas;
-        }
+            letra = temp.at(0);
+            if (letra == '>'){
+                encontrado=true;
+                cout << "Encontrado " <<endl;
+            }
+         } 
         
-
-        
-        //cout << temp << endl;
-
         if(temp.find(">") != string::npos){
 
             //Cuando detecta una nueva secuencia que no sea la primera, carga la que se esta manejando y se prepara para la nueva
@@ -81,10 +75,16 @@ Fasta Fasta::cargar(string nombre_entrada){
     }
 
     //Añadimos la ultima secuencia del archivo 
-
-    sec.setDatos(entrada);
-    sec_entrada.push_back(sec);
-    fas.setFasta(sec_entrada);
+    if(encontrado==true){
+        sec.setDatos(entrada);
+        sec_entrada.push_back(sec);
+        fas.setFasta(sec_entrada);
+    }
+    
+    if(encontrado == false){
+            cout << nombre_entrada << " no es una secuencia" << endl;
+            return fas;
+    }
 
     archivo.close();
 
