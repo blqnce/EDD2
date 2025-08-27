@@ -8,22 +8,26 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include "fasta.h"
 
 using namespace std;
 
 // Funciones implementadas
 vector<string> leer_comando();  
 void mostrar_ayuda();  
-void procesar_comando(const vector<string>& comando);
+void procesar_comando(const vector<string>& comando, Fasta& fas);
 void mostrar_ayuda_general();
 void mostrar_ayuda_comando(const string& comando);
 
 
 // Main Funcional
 int main() {
+
+    Fasta fas; // Variable para guardar el archivo fasta
+
     while (true) {
         vector<string> comando = leer_comando();
-        procesar_comando(comando);
+        procesar_comando(comando, fas);
     }
     return 0; //Practicas de operativos jajas
 }
@@ -122,7 +126,11 @@ void mostrar_ayuda_comando(const string& comando) {
 
 
 // Procesa y valida los comandos ingresados usando el arreglo
-void procesar_comando(const vector<string>& comando) {
+void procesar_comando(const vector<string>& comando, Fasta& fas) {
+
+    vector<Secuencia>::iterator it;
+    vector<Secuencia> vector;
+
     if (comando.empty()) return;
     
     string nombre = comando[0];
@@ -178,7 +186,51 @@ void procesar_comando(const vector<string>& comando) {
         cout << "Error: Faltan argumentos para el comando " << nombre << endl;
     } else if (recibidos > esperados && nombre != "ayuda") {
         cout << "Error: Demasiados argumentos para el comando " << nombre << endl;
-    } else {
-        cout << "Comando '" << nombre << "' reconocido y valido (no implementado aun)" << endl;
+    } else  if(nombre == "cargar"){
+
+        int aux;
+
+        fas = fas.cargar(comando[1]);
+
+        /*
+        Test para ver si se cargo correctamente
+        vector = fas.getFasta();
+        it = vector.begin();
+
+        for (it = vector.begin(); it != vector.end(); ++it) {
+
+                cout << it->getDescripcion() << endl;
+                
+                for (int i = 0; i < it->getDatos().size(); ++i) {
+                    cout << it->getDatos()[i] << endl;
+                }
+
+        }    
+        */
+        vector = fas.getFasta();
+        it = vector.begin();
+
+        for (it = vector.begin(); it != vector.end(); ++it) {
+
+                aux++;    
+
+        }
+        
+        if(aux == 1){
+            cout << "1 secuencia cargada correctamente desde " << comando[1] << endl;
+        } else if ( aux >= 2){
+            cout << aux << " secuencias cargadas correctamente desde " << comando[1] << endl;
+        } 
+
+
+
+    } else if (nombre == "guardar"){
+        
+        if(fas.getFasta().empty()){
+            cout << "No hay secuencias cargadas en memoria." << endl;
+        }else {
+             fas.guardar(comando[1], fas);
+        }
+
     }
 }
